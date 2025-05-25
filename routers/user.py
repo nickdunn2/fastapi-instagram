@@ -6,7 +6,7 @@ from database import db_user
 from routers.schemas import UserBase, UserDisplay
 
 router = APIRouter(
-    prefix="/user",
+    prefix="/users",
     tags=["users"]
 )
 
