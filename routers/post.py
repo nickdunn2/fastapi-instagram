@@ -43,7 +43,6 @@ def upload_image(image: UploadFile = File(...)):
     """
     letters = string.ascii_letters
     rand_str = ''.join(random.choice(letters) for i in range(6))
-    extension = f"_{rand_str}"
 
     name, ext = image.filename.rsplit(".", 1)
     filename = f"{name}_{rand_str}.{ext}"
