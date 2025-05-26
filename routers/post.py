@@ -5,9 +5,10 @@ from typing import List
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
 from sqlalchemy.orm import Session
 
+from auth.oauth2 import get_current_user
 from database.db import get_db
 from database import db_post
-from routers.schemas import PostBase, PostDisplay
+from routers.schemas import PostBase, PostDisplay, UserAuth
 
 router = APIRouter(
     prefix="/posts",
@@ -26,7 +27,7 @@ def get_all_posts(db: Session = Depends(get_db)) -> List[PostDisplay]:
 
 
 @router.post("/", response_model=PostDisplay)
-def create_post(request: PostBase, db: Session = Depends(get_db)) -> PostDisplay:
+def create_post(request: PostBase, db: Session = Depends(get_db), current_user: UserAuth = Depends(get_current_user)) -> PostDisplay:
     """
     Create a new post
     """

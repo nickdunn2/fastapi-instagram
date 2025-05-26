@@ -20,6 +20,11 @@ class User(BaseModel):
   class Config():
     orm_mode = True
 
+class UserAuth(BaseModel):
+  id: int
+  username: str
+  email: str
+
 class PostBase(BaseModel):
   image_url: str
   image_url_type: str # relative or absolute
