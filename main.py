@@ -3,12 +3,13 @@ from fastapi.staticfiles import StaticFiles
 from auth import authentication
 from database.db import engine
 from database import models
-from routers import user, post
+from routers import user, post, comment
 
 app = FastAPI()
 
 app.include_router(user.router)
 app.include_router(post.router)
+app.include_router(comment.router)
 app.include_router(authentication.router)
 
 @app.get("/")
